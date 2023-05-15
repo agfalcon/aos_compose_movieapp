@@ -4,10 +4,10 @@ import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.Shapes
+import androidx.compose.material3.Typography
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
@@ -23,7 +23,9 @@ private val LocalColors = staticCompositionLocalOf { ColorSet.Red.LightColors.ma
 
 @Composable
 fun MovieAppTheme(
-    myColors: ColorSet,
+    myColors: ColorSet = ColorSet.Red,
+    typography: Typography = Typography,
+    shapes : Shapes = Shapes,
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
@@ -50,7 +52,8 @@ fun MovieAppTheme(
     CompositionLocalProvider(LocalColors provides colorScheme) {
         MaterialTheme(
             colorScheme = colorScheme,
-            typography = Typography,
+            typography = typography,
+            shapes = shapes,
             content = content
         )
     }
