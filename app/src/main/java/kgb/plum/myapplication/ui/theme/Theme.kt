@@ -10,6 +10,7 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.toArgb
@@ -17,9 +18,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import kgb.plum.myapplication.ui.theme.color.ColorSet
+import kgb.plum.myapplication.ui.theme.color.MyColors
 
 
-private val LocalColors = staticCompositionLocalOf { ColorSet.Red.LightColors.material }
+private val LocalColor = staticCompositionLocalOf { ColorSet.Red.LightColors }
+private val LocalMaterial = staticCompositionLocalOf { ColorSet.Red.LightColors.material }
 
 @Composable
 fun MovieAppTheme(
@@ -49,7 +52,7 @@ fun MovieAppTheme(
     }
 
 
-    CompositionLocalProvider(LocalColors provides colorScheme) {
+    CompositionLocalProvider(LocalMaterial provides colorScheme) {
         MaterialTheme(
             colorScheme = colorScheme,
             typography = typography,
@@ -58,3 +61,8 @@ fun MovieAppTheme(
         )
     }
 }
+
+val MaterialTheme.colors : MyColors
+    @Composable
+    @ReadOnlyComposable
+    get() = LocalColor.current

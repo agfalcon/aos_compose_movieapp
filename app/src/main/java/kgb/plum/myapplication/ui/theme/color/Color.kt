@@ -1,7 +1,10 @@
 package kgb.plum.myapplication.ui.theme.color
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.Color
 
 val Red200 = Color(0xFFFFAAAA)
@@ -55,7 +58,8 @@ sealed class ColorSet {
                 onSurface = Black,
                 background = White,
                 onBackground = Black,
-                error = Red400
+                error = Red400,
+                onPrimary = White
             )
         )
     }
@@ -95,3 +99,4 @@ sealed class ColorSet {
         )
     }
 }
+
